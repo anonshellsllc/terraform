@@ -14,3 +14,14 @@ resource "cloudflare_record" "www" {
   type    = "A"
   proxied = true
 }
+
+resource "cloudflare_zone_settings_override" "lulz-sh-settings" {
+  name = "${var.domain}"
+
+  settings {
+    tls_1_3 = "on"
+    automatic_https_rewrites = "on"
+    ssl = "strict"
+    waf = "on"
+  }
+}
