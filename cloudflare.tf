@@ -4,7 +4,7 @@ provider "cloudflare" {
 }
 
 variable "domain" {
-  default = "educate.sh"
+  default = "" # domain root.  removed val.  let's make this more comprehensive/dynamic etc
 }
 # go to CF for detailed docs.  not me.
 resource "cloudflare_record" "evil" {
@@ -23,6 +23,6 @@ resource "cloudflare_zone_settings_override" "lulz-sh-settings" {
     automatic_https_rewrites = "on"
     ssl = "strict"
     waf = "on"
-    # TODO: // add access and hsts
+    # TODO: add access and hsts
   }
 }
