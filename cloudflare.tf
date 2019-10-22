@@ -4,13 +4,13 @@ provider "cloudflare" {
 }
 
 variable "domain" {
-  default = "lulz.sh"
+  default = "" # domain root.  removed val.  let's make this more comprehensive/dynamic etc
 }
-
-resource "cloudflare_record" "www" {
+# go to CF for detailed docs.  not me.
+resource "cloudflare_record" "evil" {
   domain  = "${var.domain}"
-  name    = "triton"
-  value   = "178.79.160.236"
+  name    = "zeus"
+  value   = "" # HOST IP 
   type    = "A"
   proxied = true
 }
@@ -23,5 +23,6 @@ resource "cloudflare_zone_settings_override" "lulz-sh-settings" {
     automatic_https_rewrites = "on"
     ssl = "strict"
     waf = "on"
+    # TODO: add access and hsts
   }
 }
